@@ -55,8 +55,3 @@ The following features are still under development:
 - **Team Leaves Count Summary**: Develop a summary view of the total leave count for the team, including approved, pending, and rejected leaves.
 - **Availability Check**: Incorporate an availability check during the leave approval process to ensure leaves can be accommodated.
 
-## Setup Instructions
-
-1. **Clone the Repository**: Clone the repository to your local machine.
-   ```sh
-   git clone <repository-url>
