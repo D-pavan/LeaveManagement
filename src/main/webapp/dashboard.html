@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>LeaveApp</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="bg-light">
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="text-center mx-auto">Leave Application</h1>
+        <button class="btn btn-success mx-2" onclick="applyLeave()">Apply Leave</button>
+        <button class="btn btn-white profile-btn" onclick="enableProfileCard()" >👤</button>
+    </div>
+    <div class="profile" id="profile-card">
+         <div class="profile-pic">
+            <h1 class="text-white text-center" id="userImage">P</h1>
+         </div>
+   
+         <h2 class="text-white" id="userName"></h2>
+         <p class="text-white" id="userEmail"></p>
+         <div class="d-flex flex-column justify-content-start">
+            <p class="text-white float-start" id="gender"></p>
+            <p class="text-white float-start" id="userManger"></p>
+         </div>
+        <button class="btn  w-100 text-white"  onclick="logOut()">Logout</button>
+    </div>
+    <div class="bg-dark d-flex flex-row">
+        <button class="btn btn-dark  m-1" onclick="myData()" id="myData">My Data</button>
+        <button class="btn btn-dark  m-1" onclick="teams()" id="teams">Teams</button>
+    </div>
+    <div class="d-flex flex-row top-nav">
+         <button class="btn bg-light m-1" onclick="fetchMyLeaves()" id="leaveRequestsBtn"><b>Leave Requests</b></button>
+         <button class="btn bg-light m-1" onclick="fetchTeamLeaves()" id="teamLeavesBtn"><b>Leave Requests</b></button>  
+         <button class="btn bg-light m-1" onclick="fetchLeavesSummary()" id="leavesSummaryBtn"><b>Leaves Summary</b></button>
+         <button class="btn bg-light m-1"  onclick="fetchMyTeam()" id="myTeamBtn"><b>My Team</b></button>  
+         <button class="btn bg-light m-1"  onclick="fetchApprovedOrRejectedLeaves()" id="onLeave"><b>Team Leaves</b></button>  
+    </div>
+   
+    <div class="leave-cards-container bg-light" id="leavesContainer">
+        <div class="leaveCards" id="leaveCards" >
+            
+        </div>
+        <div class="bg-white upcomingLeaves" id="upcoming-leaves" >
+            <h6>
+                Upcomming Leaves
+            </h6>
+             <table class="table">
+                <tr>
+                    <td >Gandhi jayanti</td>
+                    <td class="text-end">02-Oct-2024</td>
+                </tr>
+                <tr>
+                    <td >Diwali</td>
+                    <td class="text-end">31-Oct-2024</td>
+                </tr>
+                <tr>
+                    <td >Diwali</td>
+                    <td class="text-end">01-Nov-2024</td>
+                </tr>
+                <tr>
+                    <td >Christmas</td>
+                    <td class="text-end">25-Dec-2024</td>
+                </tr>
+
+             </table>
+        </div>
+        
+        
+    </div>
+
+    <div class="form-container bg-white" id="leave-form">
+    
+        <h3 class="text-dark text-center">Leave Form</h3>
+        <form>
+             <label for="leaveType" class="text-dark mx-2 font-weight-bold"><h5>Leave Type</h5></label> <br>
+             <select name="leaveType" class="form-control" id="leaveType" onchange="changeLeaveCardDetails()">
+                <option value="PERSONAL TIME OFF">Personal Time Off</option>
+                <option value="SICK">Sick</option>
+                <option value="LOSS OF PAY">Loss Of Pay</option>
+                <option value="Maternity" id="maternity">Maternity</option>
+                <option value="Paternity" id="paternity">Paternity</option>
+             </select> <br>
+             <div class="d-flex flex-row justify-content-between">
+                  <div class="w-100 mx-1">
+                      <label for="fromDate" class="mx-2"><h5>From</h5></label>
+                      <input type="date" class="w-100 form-control" min="2024-09-20" id="fromDate" name="fromDate">
+                  </div>
+                  <div class="w-100 mx-1">
+                    <label for="toDate" class="mx-2"><h5>To</h5></label>
+                    <input type="date" class="w-100 form-control" id="toDate" name="toDate">
+                </div>
+             </div><br>
+    
+             <label for="comment" class="mx-2"><h5>Comment</h5></label> <br>
+             <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
+            <br>
+            </form>
+        <div class="d-flex flex-row justify-content-end">
+            <button class="btn btn-success m-1" onclick="submitForm()">submit</button>
+            <button class="btn btn-danger m-1" onclick="cancel()">cancel</button>
+        </div>
+    </div>
+    
+    <div id="teamContainer">
+        <table class="table table-striped" id="team-container">
+            <thead>
+                <th>Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Reason</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr class="table-success">
+                
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-sm-flex flex-sm-column flex-md-row myTeam flex-wrap" id="my-team">
+        
+          
+    </div>
+    <div id="approvedLeaves">
+        <table class="table table-striped" id="approved-container">
+            <thead>
+                <th>Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Reason</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="myContainer">
+        <div class="fiterBtns float-end">
+            <button class="btn btn-success m-1" id="pendingBtn" onclick="filterPending()">Pending</button>
+            <button class="btn btn-success m-1" id="rejectedBtn" onclick="filterRejected()">Rejected</button>
+            <button class="btn btn-success m-1" id="allBtn" onclick="fetchMyLeaves()">All</button>
+        </div>
+        <table class="table table-striped" id="my-container">
+            <thead>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Reason</th>
+                <th>Applied Date</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="messageDialogue" id="messageDialogue">
+        <h5 class="text-center my-4">Message</h5>
+        <p  class="mx-4" id="msg"></p>
+        <button class="btn btn-success" onclick="ok()">Ok</button>
+    </div>
+    <div class="userDetailsCard bg-dark" id="userCard">
+         <!-- <h4 class="text-center text-white">Employee Details</h4>
+         <p class="text-white">Name  : </p>
+         <p class="text-white">Email :</p>
+         <p class="text-white">Date Of Birth :</p>
+         <p class="text-white">Phone Number: </p>
+         <p class="text-white">Leave Type :</p>
+         <p class="text-white">Leaves Taken :</p>
+         <p class="text-white">Available Leaves:</p>
+         <button class="btn btn-success float-end" onclick="closeUserCard()">Close</button>
+         <button class="btn btn-success float-end mx-1 " onclick="">Confirm</button> -->
+         
+    </div>
+   
+    <!-- <div class="leave-card" id="leaveCard">
+        <h4>Leave Details</h4>
+        <table class="table">
+             <thead>
+                 <th></th>
+                 <th>Sick</th>
+                 <th>Personal Time Off</th>
+                 <th>Maternity</th>
+                 <th>Loss Of Pay</th>
+                 <th>Paternity</th>
+             </thead>
+             <tbody>
+                
+             </tbody>
+        </table>
+     </div> -->
+    <script  src="./main.js"></script>
+</body>
+</html>

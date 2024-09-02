@@ -1,0 +1,176 @@
+.profile{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: fit-content;   
+    width: 240px;
+    z-index:999;
+    top:5;
+    right: 0;
+    border-radius: 5px;
+    
+    background-color: #2e2e2e;
+   /* background-color: rgb(170, 164, 164);*/
+}
+.fiterBtns{
+    right: 0;
+    top :100px;
+}
+.top-nav{
+    margin: 20px 0 20px 0;
+    width: 97%;
+    float: right;
+}
+.activeStatus{
+ border-top:none;
+ border-left: none;
+ border-right: none;
+ border-bottom: 5px solid rgb(130, 179, 205);
+}
+.inactive{
+    border:none;
+}
+.messageDialogue{
+    
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    left: 35%;
+    top:180px;
+    border: 1px solid rgb(226, 222, 222);
+}
+.messageDialogue button{
+    width: 100px; 
+}
+.left-nav{
+    width:100%;
+    height: 50px;
+    border-radius: 10px;
+   
+}
+.employeeCard{
+    height: fit-content;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 12px;
+    width: fit-content;
+    background-color: white;
+    border: 1px solid rgb(226, 222, 222);    
+}
+#empImage{
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    background-color: blueviolet;
+    
+}
+.text-bold{
+    font-weight: bold;
+}
+img{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+}
+#emp-logo{
+    margin: 15%;
+}
+.myTeam{
+    display: none;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+}
+#myContainer{
+    width: 100%;
+    float:right;
+}
+#teamContainer{
+    width: 100%;
+    float:right;
+}
+.form-container{
+    display: none;
+    position: absolute;
+    height: fit-content;
+    width:fit-content;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    left:35%;
+}
+#closeBtn{
+    float: right;
+}
+.leave-cards-container{
+    width: 100%;
+    float: right;
+}
+.leaveCards{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 97%;
+}
+.leaveCards div{
+    height: fit-content;
+    width: 250px;
+    background-color : white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(226, 222, 222);
+
+}
+#userImage{
+    margin: 25%;
+}
+.profile-pic{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    background-color: blueviolet;
+}
+.leave-card{
+    height: fit-content;
+    background-color: azure;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding :10px;
+    right: 5px;
+    float: right;
+}
+input{
+    width: 80%;
+}
+.profile-image{
+    height: 50px;
+    width: 50px;
+}
+body{
+    position: relative;
+}
+.upcomingLeaves{
+    padding: 10px;
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: inset;
+}
+.userDetailsCard{
+    display: none;
+    position: absolute;
+    height: fit-content;
+    width:350px;
+    border-radius: 10px;
+    padding: 10px;
+    top:100px;
+    left:35%;
+}
